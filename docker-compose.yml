@@ -1,0 +1,22 @@
+services:
+  steam:
+    container_name: steamheadless2.0
+    privileged: true
+    devices:
+      - /dev/dri:/dev/dri #For Intel, this can be changed for Nvidia GPUs too 
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+     - "3025:3000"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - CUSTOM_USER=user
+      - PASSWORD=pass
+      - TZ=Etc/UTC
+    shm_size: "5gb"
+    #volumes:
+      
+   
+
